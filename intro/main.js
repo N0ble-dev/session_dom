@@ -9,7 +9,7 @@ outerDiv.addEventListener(
   (event) => {
     console.log("Outer div (capture phase)");
   },
-  true
+  { capture: true, once: true }
 );
 
 middleDiv.addEventListener(
@@ -17,7 +17,7 @@ middleDiv.addEventListener(
   (event) => {
     console.log("Middle div (capture phase)");
   },
-  true
+  { capture: true, once: true }
 );
 
 innerDiv.addEventListener(
@@ -25,7 +25,7 @@ innerDiv.addEventListener(
   (event) => {
     console.log("Inner div (capture phase)");
   },
-  true
+  { capture: true, once: true }
 );
 
 // Event listener for bubbling phase
@@ -49,7 +49,21 @@ button.addEventListener("click", (event) => {
 
 // Event delegation example
 document.body.addEventListener("click", (event) => {
-  if (event.target.tagName == "BUTTON") {
+  if (event.target.tagName === "BUTTON") {
     console.log("Event delegated to body");
   }
 });
+
+// Function to add and remove event listeners dynamically
+function handleDivClick(event) {
+  console.log(`${event.currentTarget.id} clicked`);
+}
+
+// Add event listener to innerDiv
+innerDiv.addEventListener("click", handleDivClick);
+
+// Remove event listener after 5 seconds
+setTimeout(() => {
+  innerDiv.removeEventListener("click", handleDivClick);
+  console.log("Removed click event listener from innerDiv");
+}, 5000);
