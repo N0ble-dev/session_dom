@@ -36,10 +36,6 @@ deleteAccountButton.addEventListener("click", (event) => {
   console.log("User is authenticated. Account deleted.");
 });
 
-deleteAccountButton.addEventListener("click", () => {
-  console.log("please sign in the account ");
-});
-
 // Another event listener to display a confirmation dialog (won't fire if not authenticated)
 deleteAccountButton.addEventListener("click", () => {
   const confirmed = confirm("Are you sure you want to delete your account?");
