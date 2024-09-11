@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Authentication with stopImmediatePropagation</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        background-color: #f4f4f4;
+      }
+
+      .container {
+        background-color: #fff;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        text-align: center;
+      }
+
+      h2 {
+        margin-bottom: 20px;
+      }
+
+      .action-button,
+      .login-button {
+        padding: 12px 20px;
+        background-color: #ff5c5c;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 16px;
+        margin-top: 10px;
+        transition: background-color 0.3s ease;
+      }
+
+      .login-button {
+        background-color: #4caf50;
+        margin-bottom: 20px;
+      }
+
+      .login-button:hover {
+        background-color: #45a049;
+      }
+
+      .action-button:hover {
+        background-color: #e44b4b;
+      }
+
+      .feedback {
+        margin-top: 20px;
+        font-weight: bold;
+        color: #ff5c5c;
+      }
+
+      .feedback.success {
+        color: #4caf50;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h2>Account Settings</h2>
+      <button class="login-button" id="loginButton">Log In</button>
+      <button class="action-button" id="deleteAccountButton">
+        Delete Account
+      </button>
+      <div class="feedback" id="feedbackMessage"></div>
+    </div>
+
+    <script src="main.js"></script>
+  </body>
+</html>
