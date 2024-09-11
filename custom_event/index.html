@@ -3,15 +3,23 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>Custom Event</title>
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <div id="app">
-      <h2>Toggle Text Visibility</h2>
-      <button id="toggleButton">Toggle Text</button>
-      <p id="textElement">This is a toggleable text element!</p>
+    <button id="openModalButton">Open Modal</button>
+
+    <div id="modal" class="modal">
+      <p>
+        This is a modal window. Click outside to close or use the button below.
+      </p>
+      <button id="closeModalButton">Close Modal</button>
     </div>
+
+    <div id="overlay" class="overlay"></div>
+
+    <div id="notification"></div>
+
     <script src="main.js"></script>
   </body>
 </html>

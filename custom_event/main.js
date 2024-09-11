@@ -1,48 +1,43 @@
-const toggleButton = document.getElementById("toggleButton");
-const textElement = document.getElementById("textElement");
+// Grab elements
+const openModalButton = document.getElementById("openModalButton");
+const closeModalButton = document.getElementById("closeModalButton");
+const modal = document.getElementById("modal");
+const overlay = document.getElementById("overlay");
+const notification = document.getElementById("notification");
 
-// Define the custom event
-function toggleTextVisibility() {
-  const event = new CustomEvent("textToggled");
-  // const event = new CustomEvent("textToggled", {
-  //   detail: { isVisible: textElement.style.display === "none" },
-  // });
+// Custom event to toggle modal visibility
+function toggleModal(isOpen) {
+  const event = new CustomEvent("modalToggled", {
+    detail: { isOpen },
+  });
   document.dispatchEvent(event);
 }
 
-// Listen for the custom event to toggle text visibility
-document.addEventListener("textToggled", () => {
-  if (textElement.style.display === "none") {
-    textElement.style.display = "block";
+// Handle custom event to show/hide modal
+document.addEventListener("modalToggled", (event) => {
+  const { isOpen } = event.detail;
+  if (isOpen) {
+    modal.classList.add("active");
+    overlay.classList.add("active");
+    notification.textContent = "";
   } else {
-    textElement.style.display = "none";
+    modal.classList.remove("active");
+    overlay.classList.remove("active");
+    notification.textContent = "Modal closed.";
   }
 });
 
-// how to Receive data that send with custom event
+// Open modal on button click
+openModalButton.addEventListener("click", () => {
+  toggleModal(true);
+});
 
-// document.addEventListener("textToggled", (event) => {
-//   const isVisible = event.detail.isVisible;
-//   if (isVisible) {
-//     textElement.style.display = "block";
-//   } else {
-//     textElement.style.display = "none";
-//   }
-// });
+// Close modal on button click
+closeModalButton.addEventListener("click", () => {
+  toggleModal(false);
+});
 
-// Handle the button click to trigger the custom event
-toggleButton.addEventListener("click", toggleTextVisibility);
-
-// without custom event
-// const toggleButton = document.getElementById("toggleButton");
-// const textElement = document.getElementById("textElement");
-
-// toggleButton.addEventListener("click", () => {
-//   if (textElement.style.display === "none") {
-//     textElement.style.display = "block";
-//   } else {
-//     textElement.style.display = "none";
-//   }
-// });
-
-///////////////////
+// Close modal by clicking outside of it
+overlay.addEventListener("click", () => {
+  toggleModal(false);
+});
